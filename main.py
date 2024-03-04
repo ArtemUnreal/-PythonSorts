@@ -10,27 +10,25 @@
 #[1,2]
 #[]
 
-def quickSort(arr:[int]) -> [int]:
-    if len(arr) == 0:
-        return arr
-    arr1 = []
-    arr2 = []
-    first = arr[0]
-    first_count = 0
-    for i in range(len(arr)):
-        if first > arr[i]:
-             arr1.append(arr[i])
-        if first < arr[i]:
-             arr2.append(arr[i])
-        if first == arr[i]:
-            first_count += 1
 
-    arr1 = quickSort(arr1)
-    arr2 = quickSort(arr2)
-    #arr1.append(first)
-    res = arr1 + [first]*first_count + arr2
-
-    return res
+def quickSort(arr: [int]) -> [int]: 
+    if len(arr) <= 1: 
+        return arr 
+     
+    first = arr[0] 
+    arr1 = [] 
+    arr2 = [] 
+     
+    for i in range(1, len(arr)): 
+        if arr[i] <= first: 
+            arr1.append(arr[i]) 
+        else: 
+            arr2.append(arr[i]) 
+ 
+    arr1 = quickSort(arr1) 
+    arr2 = quickSort(arr2) 
+ 
+    return arr1 + [first] + arr2
 
 
 arr = [5, 3, 9, 1, 4, 2, 8, 7, 1, 1]
